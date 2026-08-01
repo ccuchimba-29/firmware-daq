@@ -17,8 +17,6 @@ void setJsonMessage(const float temps[12]){
     {
         tempArray.add(temps[i]);
     }
-
-
 }
 
 String getJsonMessage(){

@@ -4,6 +4,7 @@
 #include "timer_manager.h"
 #include "temp_manager.h"
 #include "json_manager.h"
+#include "random.h"
 
 float temps[12];
 
@@ -16,12 +17,12 @@ void setup() {
   Serial.println("ESP32 iniciado");
   connectWiFi();
   websocketInit();
-
+  /*
   for (int i = 0; i < 12; i++)
   {
     temps[i]=i*2;
-    /* code */
   }
+  */
   
 }
 
@@ -31,7 +32,9 @@ void loop() {
   if(timerFlags.sendFlag){
     timerFlags.sendFlag = false;
     
-    setJsonMessage(temps);
+    generateRandomNumbers();
+    setJsonMessage(randomData);
+    //setJsonMessage(temps);
 
     messageJson = getJsonMessage();
     Serial.println(messageJson);
